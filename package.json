@@ -1,0 +1,10 @@
+{
+  "name": "demobookstore-BooksService",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.815.0",
+    "jest": "^23.2.0"
+  }
+}
