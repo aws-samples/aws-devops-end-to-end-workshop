@@ -50,7 +50,7 @@ The provided CloudFormation template automates the entire creation and deploymen
 **Database components**
 
 * Product catalog/shopping cart - Amazon DynamoDB offers fast, predictable performance for the key-value lookups needed in the product catalog, as well as the shopping cart and order history.  In this implementation, we have unique identifiers, titles, descriptions, quantities, locations, and price.
-* Search - Amazon Elasticsearch Service enables full-text search for our storefront, enabling users to find products based on a variety of terms including author, title, and category.
+* Search - Amazon OpenSearch Service enables full-text search for our storefront, enabling users to find products based on a variety of terms including author, title, and category.
 * Recommendations - Amazon Neptune provides social recommendations based on what user's friends have purchased, scaling as the storefront grows with more products, pages, and users.
 * Top sellers list - Amazon ElastiCache for Redis reads order information from Amazon DynamoDB Streams, creating a leaderboard of the “Top 20” purchased or rated books.
 
@@ -77,7 +77,7 @@ Watch the recorded talk and demo of the original application [here](https://yout
 
 The solution architecture is the same as the original.  The diagram below shows the scope of our Books microservice.
 
-![High-level Architectural Diagram](readmeImages/ArchDiagram.png)
+![High-level Architectural Diagram](readmeImages/ArchDiagram v2.png)
 
 &nbsp;
 
