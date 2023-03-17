@@ -147,7 +147,7 @@ EU (Frankfurt) |	eu-central-1
    - In the review page, check the “**I acknowledge…**” check box, and create the stack
 2. Go to Cloud9 and open your IDE.
 
-Note: the difference between this template and the original from [AWS Cloud9 Bootstrapping Example](https://github.com/aws-samples/aws-cloud9-bootstrapping-example) is the inclusion of some statements to update Python to 3.8.8 and making it the default version.
+Note: the difference between this template and the original from [AWS Cloud9 Bootstrapping Example](https://github.com/aws-samples/aws-cloud9-bootstrapping-example) is the inclusion of some statements to update Python to 3.9.9 and making it the default version.
 
 #### Create CodeCommit repositories
 
