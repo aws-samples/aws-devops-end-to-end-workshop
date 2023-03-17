@@ -75,7 +75,7 @@ Watch the recorded talk and demo of the original application [here](https://yout
 
 ## Architecture
 
-The solution architecture is the same as the original.  The diagram below shows the scope of our Books microservice.
+The solution architecture is the same as the original. The diagram below shows the scope of our Books microservice.
 
 ![High-level Architectural Diagram](readmeImages/ArchDiagram v2.png)
 
