@@ -171,7 +171,7 @@ Note: the difference between this template and the original from [AWS Cloud9 Boo
      - In Cloud9 Environment tab on navigation, there will be one folder for each of these repositories. Select the folder demobookstore-BooksService and create a subfolder named src
      - Select AWS tab on navigation in Cloud9, find the lambda function demobookstore-GetBook, and download it under demobookstore-BooksService/src. If the list of services in this tab doesn't open, close and reopen Cloud9
      - Repeat previous step for demobookstore-ListBooks function
-     - In the Source Code tab in the navigation, commit your code (insert a description and type Ctrl+Enter). If you get a message asking if you want to automatically stage changes and commit, click Always. Right click the menu on demobookstore-BooksService and push the changes to the repository (this can also be done by clicking 0↓1↑ or the small cloud symbol in the bottom-left corner)
+     - In the Source Control tab in the navigation, commit your code (insert a description and type Ctrl+Enter). If you get a message asking if you want to automatically stage changes and commit, click Always. If you get a message asking to configure your e-mail and name, run these commands on the terminal (bash) window: 'git config --global user.email "anyemail"' and 'git config --global user.name "Your Name"'. Right click the menu on demobookstore-BooksService and push the changes to the repository (this can also be done by clicking 0↓1↑ or the small cloud symbol in the bottom-left corner)
      - Check your code is at CodeCommit repository
 
 #### Change code on front-end
