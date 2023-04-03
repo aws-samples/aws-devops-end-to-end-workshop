@@ -2433,7 +2433,7 @@ Resources:
         EnvironmentVariables:
           - Name: S3_BUCKET
             Value: !Ref PipelineArtifactsBucket
-        Image: 'aws/codebuild/standard:2.0'
+        Image: 'aws/codebuild/amazonlinux2-x86_64-standard:4.0'
         Type: LINUX_CONTAINER
       Name: !Sub '${ProjectName}-build'
       ServiceRole: !Ref CodeBuildRole
