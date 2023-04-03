@@ -2444,7 +2444,7 @@ Resources:
           phases:
             install:
               runtime-versions:
-                nodejs: 10
+                nodejs: 16
             pre_build:
               commands:
                 - echo Installing NPM dependencies...
