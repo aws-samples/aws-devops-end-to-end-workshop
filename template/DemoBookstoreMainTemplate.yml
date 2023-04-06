@@ -24,7 +24,7 @@ Mappings:
       NeptuneDataBucket: aws-devops-end-to-end-workshop-neptune-eu-west-1
   Constants:
     AppKeys:
-      SeedRepository: https://s3.amazonaws.com/aws-devops-end-to-end-workshop-us-east-1/aws-devops-end-to-end-workshop-main.zip    #bookstore-webapp.zip
+      SeedRepository: https://s3.amazonaws.com/aws-devops-end-to-end-workshop-us-east-1/bookstore-webapp.zip
     S3Keys:
       ListOrdersCode: functions/ListOrders.zip
       UpdateCartCode: functions/UpdateCart.zip
