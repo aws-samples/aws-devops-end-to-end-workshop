@@ -2447,6 +2447,7 @@ Resources:
                 nodejs: 16
             pre_build:
               commands:
+                - cd assets
                 - echo Installing NPM dependencies...
                 - npm install
             build:
@@ -2463,7 +2464,7 @@ Resources:
           artifacts:
             files:
               - '**/*'
-            base-directory: build        
+            base-directory: assets/build        
       Tags:
         - Key: app-name
           Value: !Ref ProjectName
@@ -2492,7 +2493,7 @@ Resources:
                 Owner: AWS
                 Provider: CodeCommit
               Configuration:
-                BranchName: master
+                BranchName: main
                 RepositoryName: !Sub '${ProjectName}-WebAssets'
               OutputArtifacts:
                 - Name: !Sub '${ProjectName}-SourceArtifact'
@@ -2617,7 +2618,7 @@ Resources:
       Environment:
         Variables:
           API_URL: !Sub 'https://${AppApi}.execute-api.${AWS::Region}.amazonaws.com/prod'
-          BRANCH_NAME: master
+          BRANCH_NAME: main
           REGION: !Ref 'AWS::Region'
           REPOSITORY_NAME: !Sub '${ProjectName}-WebAssets'
           USER_POOL_ID: !Ref UserPool
