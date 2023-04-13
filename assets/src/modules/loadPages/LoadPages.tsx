@@ -59,11 +59,7 @@ export class LoadPages extends Component<AppProps, AppState> {
       </Nav.Link>
       <NavItem onClick={this.handleLogout}><span className="orange line-height-24">Log out</span></NavItem>
       <Nav.Link as={Link} to="/cart">
-        <NavItem>
-          <div className="shopping-icon-container">
-            <span className="glyphicon glyphicon-shopping-cart white" aria-hidden="true"></span>
-          </div>
-        </NavItem>
+        <NavItem><span className="orange line-height-24">Cart</span></NavItem>
       </Nav.Link>
     </>
   );
