@@ -57,7 +57,7 @@ Resources:
       FunctionName: !Sub '${ProjectName}-GetBook'
       CodeUri: ./
       Handler: src/demobookstore-GetBook/index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Role: !ImportValue 
        'Fn::Sub': '${ProjectName}-DynamoDbRoleARN'
       MemorySize: 128
@@ -75,7 +75,7 @@ Resources:
       FunctionName: !Sub '${ProjectName}-ListBooks'
       CodeUri: ./
       Handler: src/demobookstore-ListBooks/index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Role: !ImportValue 
         'Fn::Sub': '${ProjectName}-DynamoDbRoleARN'
       MemorySize: 128
