@@ -190,7 +190,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
 
 #### Add build and service update YAML files
 
-1. In Cloud9, upload buildspec.yml, DemoBookstoreBooksServiceUpdateTemplate.yml, and package.json files, to folder demobookstore-BooksService
+1. In Cloud9, upload buildspec.yml, DemoBookstoreBooksServiceUpdateTemplate.yml, and package.json files (from folder test), to folder demobookstore-BooksService
    - buildspec.yml has building instructions. It also has testing instructions which will be used to run the automated tests. They are commented at this point, and will be used later
    - DemoBookstoreBooksServiceUpdateTemplate.yml is an updated version of DemoBookstoreBooksServiceTemplate.yml, to be used in the deployment stage of the pipeline. The definitions of ListBooks and GetBook functions were changed so they are modified on every pipeline execution (CodeUri property), to allow CloudFormation to detect changes update the stack
    - package.json sets a rteference to aws-sdk and jest as the framework for testing
