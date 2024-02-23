@@ -190,9 +190,10 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
 
 #### Add build and service update YAML files
 
-1. In Cloud9, upload buildspec.yml and DemoBookstoreBooksServiceUpdateTemplate.yml files, to folder demobookstore-BooksService
+1. In Cloud9, upload buildspec.yml, DemoBookstoreBooksServiceUpdateTemplate.yml, and package.json files, to folder demobookstore-BooksService
    - buildspec.yml has building instructions. It also has testing instructions which will be used to run the automated tests. They are commented at this point, and will be used later
-   - DemoBookstoreBooksServiceUpdateTemplate.yml is an updated version of DemoBookstoreBooksServiceTemplate.yml, to be used in the deployment stage of the pipeline. The definitions of ListBooks and GetBook functions were changed so they are modified on every pipeline execution (CodeUri property), to allow CloudFormation to detect changes update the stack 
+   - DemoBookstoreBooksServiceUpdateTemplate.yml is an updated version of DemoBookstoreBooksServiceTemplate.yml, to be used in the deployment stage of the pipeline. The definitions of ListBooks and GetBook functions were changed so they are modified on every pipeline execution (CodeUri property), to allow CloudFormation to detect changes update the stack
+   - package.json sets a rteference to aws-sdk and jest as the framework for testing
 2. Commit and push
 
 #### Create a S3 bucket for build pipeline
@@ -218,9 +219,9 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
    - Build provider = AWS CodeBuild
    - Click on Create Project button to be redirected to create a build project
      - Project name = demobookstore-BooksService-BuildProject
-     - Operating system = Amazon Linux 2
+     - Operating system = Amazon Linux
      - Runtime = Standard
-     - Image = aws/codebuild/amazonlinux2-x86_64-standard:3.0
+     - Image = aws/codebuild/amazonlinux2-x86_64-standard:4.0 (do not select 5.0, as it doesn't support Node 16)
      - (New service role) Role name = demobookstore-BooksService-BuildProject-service-role
      - Timeout = 10 minutes
      - Environment variables:
@@ -228,6 +229,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
        - APP_ID = demobookstore-BooksService-BuildProject
        - ACCOUNT_ID  = < your account id >
        - PARTITION = aws
+     - Buildspec = select "Use a buildspec file"
      - Logs
        - Check “S3 logs – optional” check box
        - Bucket = demobookstore-books-service-pipeline-bucket-< YYYYMMDDHHMM >
@@ -243,7 +245,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
    - Capabilities: select CAPABILITY_NAMED_IAM and CAPABILITY_AUTO_EXPAND
    - Role name: demobookstore-CloudFormation-role
    - Advanced -> Parameter overrides = {"AppId":"demobookstore-BooksService", "ProjectName":"demobookstore"}
-   - Create the pipeline and check if it runs and all steps are green after a while. Click the details link in the Deploy stage. You should see a change set with four changes (Books microservice objects)
+   - Create the pipeline and check if it runs and all steps are green after a while. Click the details link in the Deploy stage. You should see a change set with six changes (Books microservice objects)
 5. Modify the Deploy stage to add an action group to execute the change set:
    - Edit Deploy action and set:
       - Action name = GenerateChangeSet
@@ -268,8 +270,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
 
 ### Automate unit test for ListBooks lambda function
 
-1. Upload package.json, which sets jest as the framework for testing
-2. Enable build to run unit tests
+1. Enable build to run unit tests
    - In buildspec.yml, uncomment commands `- npm run test` and `- rm -rf ./__tests__`
 2. Unzip __tests__.zip in your local disk and upload __tests__ folder under demobookstore-BooksService
 3. Save, commit, and push
