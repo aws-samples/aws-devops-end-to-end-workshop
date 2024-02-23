@@ -42,7 +42,7 @@ Resources:
       Description: Get book by id
       Handler: index.handler
       MemorySize: 256
-      Runtime: nodejs12.x
+      Runtime: nodejs16.x
       Role: !ImportValue 
         'Fn::Sub': '${ProjectName}-DynamoDbRoleARN'
       Timeout: 120
@@ -68,7 +68,7 @@ Resources:
       Description: Get list of books by category
       Handler: index.handler
       MemorySize: 256
-      Runtime: nodejs12.x
+      Runtime: nodejs16.x
       Role: !ImportValue 
         'Fn::Sub': '${ProjectName}-DynamoDbRoleARN'
       Timeout: 120
@@ -130,7 +130,7 @@ Resources:
       - FunctionListBooksPermissions
     Type: 'AWS::ApiGateway::Method'
     Properties:
-      AuthorizationType: AWS_IAM
+      AuthorizationType: "AWS_IAM"
       HttpMethod: GET
       Integration:
         Type: AWS_PROXY
@@ -164,7 +164,7 @@ Resources:
       ResourceId: !Ref BooksApiResource
       RestApiId: !ImportValue 
         'Fn::Sub': '${ProjectName}-AppApiRef'
-      AuthorizationType: None
+      AuthorizationType: "NONE"
       HttpMethod: OPTIONS
       Integration:
         Type: MOCK
@@ -195,7 +195,7 @@ Resources:
     DependsOn: FunctionGetBookPermissions
     Type: 'AWS::ApiGateway::Method'
     Properties:
-      AuthorizationType: AWS_IAM
+      AuthorizationType: "AWS_IAM"
       HttpMethod: GET
       Integration:
         Type: AWS_PROXY
@@ -231,7 +231,7 @@ Resources:
       ResourceId: !Ref BookItemApiResource
       RestApiId: !ImportValue 
         'Fn::Sub': '${ProjectName}-AppApiRef'
-      AuthorizationType: None
+      AuthorizationType: "NONE"
       HttpMethod: OPTIONS
       Integration:
         Type: MOCK
