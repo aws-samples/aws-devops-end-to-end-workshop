@@ -259,7 +259,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
      - Change set name = pipeline-changeset
      - Leave all other fields as they are hit “Done”
 6. Test your microservice in Cloud9
-   - Make a change in ListBooks function, including something in the log, as console.log(“I’m in ListBooks”)
+   - Make a change in ListBooks function, including something in the log, as console.log("I’m in ListBooks")
    - Save, commit and push
    - Check if the pipeline run (all steps green)
    - As the deployment package is larger than 3MB, due to node modules, you'll not be able to see the Lambda function code using AWS Console
