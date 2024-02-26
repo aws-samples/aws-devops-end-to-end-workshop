@@ -272,7 +272,7 @@ Make a change in demobookstore-WebAssets and check if the pipeline running.
 
 1. Enable build to run unit tests
    - In buildspec.yml, uncomment commands `- npm run test` and `- rm -rf ./__tests__`
-2. Unzip "__tests__.zip" in your local disk and upload "__tests__" folder under demobookstore-BooksService
+2. Unzip `__tests__.zip` in your local disk and upload `__tests__` folder under demobookstore-BooksService
 3. Save, commit, and push
 4. In CodePipeline, open your books service pipeline (demobookstore-BooksService-Pipeline), wait for it to complete, and click “details” on Build stage. Check the messages indicating the test was successfully run
 
