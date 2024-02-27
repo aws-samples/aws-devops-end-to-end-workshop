@@ -302,14 +302,24 @@ It's an alternative to Cloud9.
 
 To tear down your application and remove all resources associated with AWS Bookstore Demo App, follow these steps:
 
-1. Log into the [Amazon S3 Console](https://console.aws.amazon.com/s3) and  delete the buckets created for the demo app.  
-   - There should be two buckets created for AWS Bookstore Demo App.  The buckets names will start with the stack name you provided on CloudFormation when creating the frontend, as "DemoBookStoreStack", for example. 
-   - Also delete the S3 bucket for build pipeline: demobookstore-books-service-pipeline-bucket-< YYYYMMDDHHMM >.  
+1. Delete all resources you created manually (policies, roles, pipeline, buckets,...):
+   - CodePipeline/Pipeline: demobookstore-BooksService-Pipeline
+   - CodeCommit/Repository: demobookstore-BooksService
+   - CodeBuild/Build project: demobookstore-BooksService-BuildProject
+   - IAM/Role: demobookstore-BooksService-BuildProject-service-role
+   - IAM/Policies: CodeBuildBasePolicy-demobookstore-BooksService-BuildProject-us-east-1, AWSCodePipelineServiceRole-us-east-1-demobookstore-BooksService-Pipeline, start-pipeline-execution-us-east-1-demobookstore-BooksService-Pipeline
+   - S3/Buckets: there should be two buckets created for AWS Bookstore Demo App.  The buckets names will start with the stack name you provided on CloudFormation when creating the frontend, as "DemoBookStoreStack", for example. Also delete the S3 bucket for build pipeline: demobookstore-books-service-pipeline-bucket-< YYYYMMDDHHMM >.  
    - *Note: Please be **very careful** to only delete the buckets associated with this app that you are absolutely sure you want to delete.*
-2. Log into the AWS CloudFormation Console and find the stacks you created for the demo app.
-3. Delete the DemoBooksServiceStack stack.
-4. Delete the DemoBookStoreStack stack. This removal could take more than 90 minutes, and fail. If this happen, delete it again and you'll get a message with some resources you should manually delete. Delete the VPC: it'll ask you to delete two network interfaces. Delete them and then the VPC. Continue deleting the stack. It should complete in few seconds.
-5. Delete the roles you created: demobookstore-CloudFormation-role and demobookstore-BooksService-BuildProject-service-role.
+4. Log into the AWS CloudFormation Console and find the stacks you created for the demo app.
+5. Delete the DemoBooksServiceStack stack.
+6. Delete the DemoBookStoreStack stack:
+   - This removal could take more than 90 minutes, and fail. If this happen, delete it again and you'll get a message with some resources you should keep (DeleteBucketsObjects and bookstoreNeptuneLoader). Select both to keep them and delete the stack.
+   - It could fail again. Delete once again and you'll get a message with some resources you should manually delete (bookstoreNeptuneSecurityGroup, bookstoreSubnet1, and bookstoreSubnet2).
+   - Click the link on bookstoreNeptuneSecurityGroup and try to delete: it'll ask you to delete two network interfaces. Delete them and then the security group.
+   - Click the link on bookstoreSubnet1 and delete the two subnets.
+   - Continue deleting the stack, without checking the box on the resources. It should complete in few seconds.
+8. On IAM, delete the roles demobookstore-CloudFormation-role, cwe-role-us-east-1-demobookstore-BooksService-Pipeline, and AWSCodePipelineServiceRole-us-east-1-demobookstore-BooksService.
+9. On CloudWatch, delete all Log groups containing "bookstore".
 
 *Remember to shut down/remove all related resources once you are finished to avoid ongoing charges to your AWS account.*
 
@@ -318,7 +328,7 @@ To tear down your application and remove all resources associated with AWS Books
 ## Known limitations
 
 These are the same known limitations in the original web application. Note that the application was written for demonstration purposes and not for production use.
-
+The web application currently uses Node16. It'll be updated to Node18 soon.
 There are some network errors observed on Firefox.  We are looking into this.
 
 &nbsp;&nbsp;
