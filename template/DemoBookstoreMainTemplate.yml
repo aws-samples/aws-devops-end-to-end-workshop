@@ -2515,7 +2515,7 @@ Resources:
         'Fn::GetAtt':
           - SeederRole
           - Arn
-      Runtime: java8
+      Runtime: java21
       Timeout: 900
     Type: 'AWS::Lambda::Function'
     Metadata:
